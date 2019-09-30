@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Test</title>
+</head>
+<body>
+    
+    <div class="wrap">
+        <div class="main">
+            <h1>Стоимость обучения</h1>
+            <div class="content">
+                <div class="left">
+                    <div class="discount">
+                        <div>скидка</div>
+                        <div>40%</div>
+                        <div>первым 20</div>
+                    </div>
+                    <div class="prices">
+                        <div class="full-price">
+                            <div class="text">Полная стоимость курса</div>
+                            <div class="price">50 000 ₽</div>
+                        </div>
+                        <div class="installment">
+                            <div class="price">2 900₽</div>
+                            <div class="text">Рассрочка без первого взноса</div>
+                        </div>
+                        <div class="initials">
+                            <div class="price">29 000₽</div>
+                            <div class="text">Для первых 20-ти</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <h2>Запишитесь на курс</h2>
+                    <ul class="phones">
+                        <li class="item">Телефон</li>
+                        <li class="item">Телефон</li>
+                        <li class="item">Телефон</li>
+                        <li class="item">Телефон</li>        
+                    </ul>
+                    <div class="info">
+                        <div class="start">
+                            Старт курса: <span class="blue bold">7 сентября</span>
+                        </div>
+                        <div class="remains">
+                            Осталось: <span class="blue bold">19 мест</span>
+                        </div>
+                    </div>
+                    <form method="POST" onsubmit="return validate();" name="form">
+                        <input type="text" placeholder="Имя" name="name">
+                        <span id="nameError" style="color:red;padding-top:5px;"></span>
+                        <input type="text" placeholder="Телефон" name="phone">
+                        <span id="phoneError" style="color:red;padding-top:5px;"></span>
+                        <input type="email" placeholder="Email" name="email" required>
+                        <input type="submit" value="ЗАПИСАТЬСЯ">
+                        <div class="personal">
+                            <input type="checkbox" id="data" class="checkbox" name="checkbox">
+                            <label for="data">Я согласен с условиями обработки <a href="#" class="blue">персональных данных</a></label>
+                            <span id="checkboxError" style="color:red;padding-top:5px;"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+function validate() {
+
+
+    document.getElementById('nameError').innerHTML='';
+    document.getElementById('phoneError').innerHTML='';
+    document.getElementById('checkboxError').innerHTML='';
+
+
+    var name = document.forms['form']['name'].value;
+    var phone = document.forms['form']['phone'].value;
+
+
+    var letters = /^[а-яА-ЯёЁa-zA-Z]+$/;
+    if(!name.match(letters))
+    {
+        document.getElementById('nameError').innerHTML='username must have alphabetcharactersonly';
+        return false;
+    }
+
+    var numbers = /^[0-9]+$/;
+    if(!phone.match(numbers))
+    {
+        document.getElementById('phoneError').innerHTML='phone must have numericcharactersonly';
+        return false;
+    }
+
+    if(!document.forms['form']['checkbox'].checked) {
+        document.getElementById('checkboxError').innerHTML='this field is required';
+        return false;
+    }
+}
+
+</script>
+
+</html>
